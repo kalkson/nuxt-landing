@@ -1,9 +1,7 @@
 <template>
   <Fragment>
     <Header />
-    <div class="container">
-      <Nuxt />
-    </div>
+    <Nuxt />
   </Fragment>
 </template>
 
@@ -16,5 +14,13 @@ body {
   width: 100%;
   padding: 0 140px;
   height: fit-content;
+}
+
+.full-screen {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 </style>

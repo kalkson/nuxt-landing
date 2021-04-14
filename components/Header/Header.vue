@@ -1,7 +1,10 @@
 <template>
   <Fragment>
     <div class="container header-container">
-      <nav class="header"><Logo class="header__logo" /></nav>
+      <nav class="header">
+        <Logo class="header__logo" />
+        <Button />
+      </nav>
     </div>
   </Fragment>
 </template>
@@ -12,11 +15,13 @@ export default {}
 
 <style lang="scss" scoped>
 .header {
-  position: fixed;
-  height: 110px;
+  height: 90px;
   color: white;
+  width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  z-index: 10;
 
   &__logo {
     height: 50px;
