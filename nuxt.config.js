@@ -13,9 +13,6 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
-  // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
-
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
 
@@ -35,6 +32,14 @@ export default {
       },
     ],
   ],
+
+  // Modules: https://go.nuxtjs.dev/config-modules
+  modules: ['@nuxtjs/style-resources', '@nuxtjs/svg'],
+
+  css: ['~/style/_global.css'],
+  styleResources: {
+    scss: ['~/style/_variables.scss'],
+  },
   googleFonts: {
     families: {
       Roboto: [100, 200, 300, 400, 500, 600, 700, 800, 900],
@@ -42,8 +47,6 @@ export default {
     display: 'swap',
     preconnect: true,
   },
-  // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},

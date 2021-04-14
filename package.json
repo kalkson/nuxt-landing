@@ -12,8 +12,10 @@
     "lint": "npm run lint:js && npm run lint:style"
   },
   "dependencies": {
+    "@nuxtjs/svg": "^0.1.12",
     "core-js": "^3.9.1",
-    "nuxt": "^2.15.3"
+    "nuxt": "^2.15.3",
+    "vue-automatic-import-loader": "^1.0.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^6.0.0",
