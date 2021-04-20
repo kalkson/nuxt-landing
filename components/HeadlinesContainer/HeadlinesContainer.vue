@@ -1,5 +1,5 @@
 <template>
-  <section class="container"><slot></slot></section>
+  <div class="section"><slot></slot></div>
 </template>
 
 <script>
@@ -7,12 +7,12 @@ export default {}
 </script>
 
 <style lang="scss" scoped>
-.container {
+.section {
   height: 400px;
   display: flex;
   flex-direction: column;
 
-  & button:last-child {
+  &__button {
     margin-top: auto;
   }
 }

@@ -21,6 +21,7 @@ button {
   border-radius: 4px;
   height: fit-content;
   width: fit-content;
+  opacity: 0;
 
   &.filled {
     color: $color-main;

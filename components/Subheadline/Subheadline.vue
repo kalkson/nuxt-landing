@@ -13,5 +13,6 @@ export default {}
   color: white;
   margin-top: 19px;
   font-weight: 400;
+  opacity: 0;
 }
 </style>

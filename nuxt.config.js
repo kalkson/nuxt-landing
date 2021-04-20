@@ -26,6 +26,7 @@ export default {
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/svg',
     '@nuxtjs/stylelint-module',
+    '@nuxtjs/composition-api/module',
     [
       '@nuxtjs/google-fonts',
       {

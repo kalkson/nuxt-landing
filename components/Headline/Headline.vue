@@ -14,6 +14,7 @@ export default {}
   font-weight: 900;
   font-size: 9.6rem;
   color: white;
+  opacity: 0;
 
   &__oranged {
     color: $color-primary;
