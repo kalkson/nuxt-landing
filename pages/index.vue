@@ -1,75 +1,41 @@
 <template>
   <div class="full-screen-grid">
-    <Navigation />
-    <HeadlinesContainer>
-      <Illustration ref="$illustration" class="view-illustration" />
-      <Headline ref="$headline"
-        >bitcoin exchange
-        <br />
-        and
-        <span class="headline__oranged">wallet</span></Headline
-      >
-      <Subheadline ref="$subheadline"
-        >bitcoin excahnge you can trust.</Subheadline
-      >
-      <Button ref="$button" class="section__button" type="filled"
-        >sign up for free</Button
-      >
-    </HeadlinesContainer>
+    <Navigation
+      v-gsap.fromTo="[
+        { x: -100, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.6, delay: 1 },
+      ]"
+      class="navigation"
+      @changeView="changeView"
+    />
+    <HeadlinesContainer :active-view="activeView" />
   </div>
 </template>
 
 <script>
-import { ref, watch } from '@nuxtjs/composition-api'
-import gsap from 'gsap'
-import Illustration from '~/assets/svg/illustration.svg?inline'
-
-const gsapFromTo = ($element, delay = 0) => {
-  gsap.fromTo($element, { opacity: 0, y: 500 }, { opacity: 1, y: 0, delay })
-}
+import { ref } from '@nuxtjs/composition-api'
 
 export default {
-  components: {
-    Illustration,
-  },
-
   setup() {
-    const $illustration = ref(null)
-    const $headline = ref(null)
-    const $subheadline = ref(null)
-    const $button = ref(null)
+    const activeView = ref(null)
 
-    watch($illustration, () => {
-      gsapFromTo($illustration.value.$el)
-    })
-    watch($headline, () => {
-      gsapFromTo($headline.value.$el)
-    })
-    watch($subheadline, () => {
-      gsapFromTo($subheadline.value.$el, 0.2)
-    })
-    watch($button, () => {
-      gsapFromTo($button.value.$el, 0.3)
-    })
+    const changeView = (number) => {
+      console.log(number)
+
+      setTimeout(() => {
+        activeView.value = number
+      }, 1100)
+    }
 
     return {
-      $illustration,
-      $headline,
-      $subheadline,
-      $button,
+      activeView,
+      changeView,
     }
   },
 }
 </script>
 
 <style lang="scss" scoped>
-.view-illustration {
-  position: absolute;
-  z-index: -1;
-  right: 0;
-  top: -200px;
-}
-
 .full-screen-grid {
   width: 100%;
   height: 100vh;

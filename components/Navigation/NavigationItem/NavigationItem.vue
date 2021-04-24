@@ -1,9 +1,9 @@
 <template>
   <li
-    :class="['item', { 'no-after': after }, { active: isActive }]"
+    :class="['item', { active: isActive }]"
     @click.prevent="$emit('updateView')"
   >
-    <span class="item__label">who we are?</span>
+    <span class="item__label"><slot></slot></span>
     <div class="item__dot"></div>
   </li>
 </template>
@@ -45,12 +45,6 @@ $base: item;
     height: 28px;
   }
 
-  &.no-after {
-    &::after {
-      display: none;
-    }
-  }
-
   &__dot {
     width: 12px;
     height: 12px;
@@ -88,11 +82,11 @@ $base: item;
   }
 
   &.active {
-    .item__label {
+    /* .item__label {
       visibility: visible;
       transform: translateX(0);
       opacity: 1;
-    }
+    } */
 
     .item__dot {
       background-color: $color-primary;

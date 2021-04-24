@@ -27,6 +27,7 @@ export default {
     '@nuxtjs/svg',
     '@nuxtjs/stylelint-module',
     '@nuxtjs/composition-api/module',
+    'nuxt-gsap-module',
     [
       '@nuxtjs/google-fonts',
       {
@@ -49,7 +50,12 @@ export default {
     display: 'swap',
     preconnect: true,
   },
-
+  // loading: '~/components/Loading/Loading.vue',
+  // loadingIndicator: {
+  //   name: 'circle',
+  //   color: '#3B8070',
+  //   background: 'white',
+  // },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
 }

@@ -2,10 +2,36 @@
   <Fragment>
     <Header />
     <div class="container">
-      <Nuxt />
+      <Nuxt v-if="!showHideSpinner" />
+    </div>
+    <div v-if="showHideSpinner" class="loading-page">
+      <div class="sk-chase">
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+      </div>
     </div>
   </Fragment>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      showHideSpinner: true,
+    }
+  },
+  beforeCreate() {
+    this.showHideSpinner = true
+  },
+  mounted() {
+    this.showHideSpinner = false
+  },
+}
+</script>
 
 <style lang="scss">
 body {
@@ -16,5 +42,109 @@ body {
   width: 100%;
   padding: 0 140px;
   height: fit-content;
+}
+
+.loading-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* background: rgba(255, 255, 255, 0.8); */
+
+  text-align: center;
+  padding-top: 200px;
+  font-size: 30px;
+  font-family: sans-serif;
+}
+
+.sk-chase {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  animation: sk-chase 2.5s infinite linear both;
+}
+
+.sk-chase-dot {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  animation: sk-chase-dot 2s infinite ease-in-out both;
+}
+
+.sk-chase-dot::before {
+  background: white;
+  content: '';
+  display: block;
+  width: 25%;
+  height: 25%;
+  border-radius: 100%;
+  animation: sk-chase-dot-before 2s infinite ease-in-out both;
+}
+
+.sk-chase-dot:nth-child(1) {
+  animation-delay: -1.1s;
+}
+.sk-chase-dot:nth-child(2) {
+  animation-delay: -1s;
+}
+.sk-chase-dot:nth-child(3) {
+  animation-delay: -0.9s;
+}
+.sk-chase-dot:nth-child(4) {
+  animation-delay: -0.8s;
+}
+.sk-chase-dot:nth-child(5) {
+  animation-delay: -0.7s;
+}
+.sk-chase-dot:nth-child(6) {
+  animation-delay: -0.6s;
+}
+.sk-chase-dot:nth-child(1)::before {
+  animation-delay: -1.1s;
+}
+.sk-chase-dot:nth-child(2)::before {
+  animation-delay: -1s;
+}
+.sk-chase-dot:nth-child(3)::before {
+  animation-delay: -0.9s;
+}
+.sk-chase-dot:nth-child(4)::before {
+  animation-delay: -0.8s;
+}
+.sk-chase-dot:nth-child(5)::before {
+  animation-delay: -0.7s;
+}
+.sk-chase-dot:nth-child(6)::before {
+  animation-delay: -0.6s;
+}
+
+@keyframes sk-chase {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sk-chase-dot {
+  80%,
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sk-chase-dot-before {
+  50% {
+    transform: scale(0.4);
+  }
+  100%,
+  0% {
+    transform: scale(1);
+  }
 }
 </style>

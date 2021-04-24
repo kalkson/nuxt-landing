@@ -22,7 +22,6 @@ export default {}
   justify-content: space-between;
   align-items: center;
   z-index: 10;
-  opacity: 0;
 
   &__logo {
     height: 50px;
