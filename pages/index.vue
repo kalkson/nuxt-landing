@@ -15,11 +15,11 @@
 
 <style lang="scss" scoped>
 .full-screen-grid {
-  width: 100%;
-  height: 100vh;
-  align-items: center;
   position: relative;
   display: grid;
   grid-template-columns: minmax(200px, 200px) 1fr;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
 }
 </style>

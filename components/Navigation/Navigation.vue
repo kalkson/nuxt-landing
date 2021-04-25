@@ -59,8 +59,8 @@ export default {
 <style lang="scss" scoped>
 .navigation {
   &__list {
-    list-style-type: none;
     padding: 0;
+    list-style-type: none;
 
     & > li:last-of-type {
       &::after {

@@ -13,17 +13,17 @@ export default {}
 
 <style lang="scss" scoped>
 .header {
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
   height: 90px;
   color: white;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 10;
 
   &__logo {
-    height: 50px;
     width: 42px;
+    height: 50px;
   }
 }
 

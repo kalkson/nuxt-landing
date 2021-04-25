@@ -28,43 +28,43 @@ export default {
 $base: item;
 
 .item {
-  margin: 30px 0;
   position: relative;
+  margin: 30px 0;
   font-size: 2.4rem;
-  text-transform: uppercase;
   font-style: italic;
   font-weight: bold;
+  text-transform: uppercase;
 
   &::after {
-    content: '';
     position: absolute;
-    width: 2px;
-    background: white;
-    right: calc(100% + 15px);
     top: calc(100%);
+    right: calc(100% + 15px);
+    width: 2px;
     height: 28px;
+    content: '';
+    background: white;
   }
 
   &__dot {
+    position: absolute;
+    top: calc(50% - 6px);
+    right: calc(100% + 10px);
     width: 12px;
     height: 12px;
-    border-radius: 20px;
     background-color: white;
-    position: absolute;
-    right: calc(100% + 10px);
-    top: calc(50% - 6px);
-    transform: scale(1);
+    border-radius: 20px;
     transition: transform 0.2s linear;
+    transform: scale(1);
   }
 
   &__label {
+    display: block;
+    text-shadow: 2px 2px 20px #000;
+    white-space: nowrap;
     visibility: hidden;
     opacity: 0;
     transition: transform 0.1s linear, opacity 0.2s linear;
     transform: translateX(-50%);
-    display: block;
-    white-space: nowrap;
-    text-shadow: 2px 2px 20px #000;
   }
 
   &:hover {

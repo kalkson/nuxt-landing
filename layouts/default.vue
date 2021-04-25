@@ -40,50 +40,50 @@ body {
 
 .container {
   width: 100%;
-  padding: 0 140px;
   height: fit-content;
+  padding: 0 140px;
 }
 
 .loading-page {
   position: fixed;
   top: 0;
   left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100vw;
   height: 10vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   /* background: rgba(255, 255, 255, 0.8); */
 
-  text-align: center;
   padding-top: 200px;
-  font-size: 30px;
   font-family: sans-serif;
+  font-size: 30px;
+  text-align: center;
 }
 
 .sk-chase {
+  position: relative;
   width: 40px;
   height: 40px;
-  position: relative;
   animation: sk-chase 2.5s infinite linear both;
 }
 
 .sk-chase-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
   animation: sk-chase-dot 2s infinite ease-in-out both;
 }
 
 .sk-chase-dot::before {
-  background: white;
-  content: '';
   display: block;
   width: 25%;
   height: 25%;
+  content: '';
+  background: white;
   border-radius: 100%;
   animation: sk-chase-dot-before 2s infinite ease-in-out both;
 }

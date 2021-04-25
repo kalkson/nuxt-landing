@@ -10,10 +10,10 @@ export default {}
 
 <style lang="scss" scoped>
 .headline {
-  text-transform: uppercase;
-  font-weight: 900;
   font-size: 9.6rem;
+  font-weight: 900;
   color: white;
+  text-transform: uppercase;
   opacity: 0;
 
   &__oranged {

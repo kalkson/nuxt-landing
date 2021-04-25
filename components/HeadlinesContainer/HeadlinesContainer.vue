@@ -87,10 +87,10 @@ export default {
 
 <style lang="scss" scoped>
 .section {
-  height: 400px;
+  position: relative;
   display: flex;
   flex-direction: column;
-  position: relative;
+  height: 400px;
 
   &__button {
     margin-top: auto;
@@ -99,8 +99,8 @@ export default {
 
 .view-illustration {
   position: absolute;
-  z-index: 0;
-  right: -200px;
   top: -100%;
+  right: -200px;
+  z-index: 0;
 }
 </style>

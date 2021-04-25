@@ -8,11 +8,11 @@ export default {}
 
 <style lang="scss" scoped>
 .subheadline {
-  text-transform: uppercase;
-  font-size: 3.2rem;
-  color: white;
   margin-top: 19px;
+  font-size: 3.2rem;
   font-weight: 400;
+  color: white;
+  text-transform: uppercase;
   opacity: 0;
 }
 </style>

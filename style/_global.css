@@ -10,8 +10,8 @@
 
 html,
 body {
-  margin: 0;
   padding: 0;
+  margin: 0;
   overflow: hidden;
 }
 
@@ -25,13 +25,13 @@ body {
 }
 
 a {
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
 }
 
 button {
-  cursor: pointer;
   padding: 0;
+  cursor: pointer;
   border: none;
   outline: none;
 }
@@ -43,6 +43,6 @@ h4,
 h5,
 h6,
 p {
-  margin: 0;
   padding: 0;
+  margin: 0;
 }

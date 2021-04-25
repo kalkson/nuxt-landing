@@ -16,24 +16,24 @@ export default {
 
 <style lang="scss" scoped>
 button {
-  text-transform: uppercase;
-  font-size: 2rem;
-  border-radius: 4px;
-  height: fit-content;
   width: fit-content;
+  height: fit-content;
+  font-size: 2rem;
+  text-transform: uppercase;
+  border-radius: 4px;
   opacity: 0;
 
   &.filled {
+    padding: 14px 70px;
     color: $color-main;
     background: $color-secondary;
-    padding: 14px 70px;
   }
 
   &.empty {
-    background: none;
-    color: $color-primary;
-    border: solid 1px $color-primary;
     padding: 14px 34px;
+    color: $color-primary;
+    background: none;
+    border: solid 1px $color-primary;
   }
 }
 </style>
