@@ -6,7 +6,7 @@
         :key="item.label"
         :view-number="i"
         :is-active="i === activeView ? true : false"
-        @updateView="() => changeActiveView(i)"
+        @updateView="() => views.changeActiveView(i)"
         >{{ item.label }}</NavigationItem
       >
     </ul>
@@ -14,37 +14,44 @@
 </template>
 
 <script>
-import { ref, useStore } from '@nuxtjs/composition-api'
+// import { ref } from '@nuxtjs/composition-api'
+import { useViews } from '~/hooks/views'
 
 export default {
-  setup(props, { emit }) {
-    const activeView = ref(0)
-    const isAnimated = ref(false)
-    const store = useStore()
+  setup() {
+    // const activeView = ref(0)
+    // const isAnimated = ref(false)
+    // const store = useStore()
+    const views = useViews()
 
-    const items = [
-      { label: 'Home' },
-      { label: 'Invest' },
-      { label: 'Be first' },
-      { label: 'Who we are' },
-      { label: 'Contact' },
-    ]
+    const { items, activeView, changeActiveView } = views
+    // const views = useViews()
 
-    const changeActiveView = (number) => {
-      if (isAnimated.value === true) return
-      activeView.value = number
-      store.commit('setActiveView', number)
-      isAnimated.value = true
-      setTimeout(() => {
-        isAnimated.value = false
-      }, 1100)
+    const changeViewOnScroll = ({ deltaY }) => {
+      const number = deltaY > 0 ? activeView.value + 1 : activeView.value - 1
+      views.changeActiveView(number)
     }
 
     return {
       changeActiveView,
+      views,
+      changeViewOnScroll,
       activeView,
       items,
     }
+  },
+
+  beforeMount() {
+    window.addEventListener('wheel', this.changeViewOnScroll)
+    window.addEventListener('swipedown', () =>
+      this.views.changeActiveView(this.activeView - 1)
+    )
+    window.addEventListener('swipeup', () =>
+      this.views.changeActiveView(this.activeView + 1)
+    )
+  },
+  unmounted() {
+    window.removeEventListener('wheel', this.changeViewOnScroll)
   },
 }
 </script>

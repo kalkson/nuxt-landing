@@ -14,7 +14,13 @@ export default {
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    {
+      src: '~/plugins/swipe-touch-events.js',
+      mode: 'client',
+    },
+    '~/plugins/vue-fragment.js',
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

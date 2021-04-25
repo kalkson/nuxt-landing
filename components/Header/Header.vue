@@ -1,12 +1,10 @@
 <template>
-  <Fragment>
-    <div class="container header-container">
-      <nav class="header">
-        <Logo class="header__logo" />
-        <Button />
-      </nav>
-    </div>
-  </Fragment>
+  <div class="container header-container">
+    <nav class="header">
+      <Logo class="header__logo" />
+      <Button />
+    </nav>
+  </div>
 </template>
 
 <script>

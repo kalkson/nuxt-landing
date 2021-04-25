@@ -1,7 +1,7 @@
 <template>
   <div class="section">
     <Illustration class="view-illustration" />
-    <img :src="string" alt="" />
+    <!-- <img alt="" /> -->
     <Headline
       ref="$headline"
       v-gsap.fromTo="[
@@ -32,9 +32,9 @@
 </template>
 
 <script>
-import { ref, watch, useStore, computed } from '@nuxtjs/composition-api'
-// import { useStore } from 'vuex'
 import gsap from 'gsap'
+import { ref, watch } from '@nuxtjs/composition-api'
+import { useViews, useItems } from '~/hooks/views'
 import Illustration from '~/assets/svg/illustration.svg?inline'
 
 export default {
@@ -47,36 +47,30 @@ export default {
     const $subheadline = ref(null)
     const $button = ref(null)
 
-    const store = useStore()
-    const items = store.getters.views
-
-    const activeItem = ref(items[0])
-
-    const activeView = computed(() => store.getters.activeView)
+    const { activeView } = useViews()
+    const [items, activeItem, changeActiveItem] = useItems()
+    // const activeItem = ref(items[0])
 
     watch(activeView, () => {
-      gsap.fromTo(
+      gsap.to(
         $headline.value.$el,
-        { opacity: 1, y: 0 },
+        // { opacity: 1, y: 0 },
         { opacity: 0, y: -500, delay: 0.4, duration: 1 }
       )
 
-      gsap.fromTo(
+      gsap.to(
         $subheadline.value.$el,
-        { opacity: 1, y: 0 },
+        // { opacity: 1, y: 0 },
         { opacity: 0, y: -500, delay: 0.3, duration: 1 }
       )
 
-      gsap.fromTo(
+      gsap.to(
         $button.value.$el,
-        { opacity: 1, y: 0 },
+        // { opacity: 1, y: 0 },
         { opacity: 0, y: -500, delay: 0.2, duration: 1 }
       )
 
-      setTimeout(() => {
-        activeItem.value = items[activeView.value]
-        // console.log(items[4], activeView.value)
-      }, 1200)
+      changeActiveItem(items[activeView.value])
     })
 
     return {

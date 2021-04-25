@@ -6,34 +6,12 @@
         { x: 0, opacity: 1, duration: 0.6, delay: 1 },
       ]"
       class="navigation"
-      @changeView="changeView"
     />
-    <HeadlinesContainer :active-view="activeView" />
+    <HeadlinesContainer />
   </div>
 </template>
 
-<script>
-import { ref } from '@nuxtjs/composition-api'
-
-export default {
-  setup() {
-    const activeView = ref(null)
-
-    const changeView = (number) => {
-      console.log(number)
-
-      setTimeout(() => {
-        activeView.value = number
-      }, 1100)
-    }
-
-    return {
-      activeView,
-      changeView,
-    }
-  },
-}
-</script>
+<script></script>
 
 <style lang="scss" scoped>
 .full-screen-grid {

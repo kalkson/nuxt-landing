@@ -1,5 +1,5 @@
 <template>
-  <Fragment>
+  <div>
     <Header />
     <div class="container">
       <Nuxt v-if="!showHideSpinner" />
@@ -14,7 +14,7 @@
         <div class="sk-chase-dot"></div>
       </div>
     </div>
-  </Fragment>
+  </div>
 </template>
 
 <script>
