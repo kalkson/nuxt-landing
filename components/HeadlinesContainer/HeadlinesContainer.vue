@@ -1,96 +1,53 @@
 <template>
   <div class="section">
+    <div ref="$background" class="background"></div>
     <img
       ref="$illustration"
-      v-gsap.fromTo="[
-        { opacity: 0, y: 500 },
-        { opacity: 1, y: 0, delay: 0.2, duration: 1 },
-      ]"
       class="view-illustration"
       :src="activeItem.illustration"
       alt="background illustration"
     />
-    <Headline
-      ref="$headline"
-      v-gsap.fromTo="[
-        { opacity: 0, y: 500 },
-        { opacity: 1, y: 0, delay: 0.2, duration: 1 },
-      ]"
-      >{{ activeItem.title }}</Headline
-    >
-    <Subheadline
-      ref="$subheadline"
-      v-gsap.fromTo="[
-        { opacity: 0, y: 500 },
-        { opacity: 1, y: 0, delay: 0.3, duration: 1 },
-      ]"
+    <Headline ref="$headline">{{ activeItem.title }}</Headline>
+    <Subheadline ref="$subheadline"
       >bitcoin excahnge you can trust.</Subheadline
     >
-    <Button
-      ref="$button"
-      v-gsap.fromTo="[
-        { opacity: 0, y: 500 },
-        { opacity: 1, y: 0, delay: 0.4, duration: 1 },
-      ]"
-      class="section__button"
-      type="filled"
+    <Button ref="$button" class="section__button" type="filled"
       >sign up for free</Button
     >
   </div>
 </template>
 
 <script>
-import gsap from 'gsap'
-import { ref, watch } from '@nuxtjs/composition-api'
+// import gsap from 'gsap'
+import { ref } from '@nuxtjs/composition-api'
 import { useViews, useItems } from '~/hooks/views'
+import { useAnimation } from '~/hooks/animations'
 
 export default {
   setup() {
+    const $background = ref(null)
+    const $illustration = ref(null)
     const $headline = ref(null)
     const $subheadline = ref(null)
     const $button = ref(null)
-    const $illustration = ref(null)
 
+    const [items, activeItem] = useItems()
     const { activeView } = useViews()
-    const [items, activeItem, changeActiveItem] = useItems()
 
-    watch(activeView, () => {
-      gsap.to($headline.value.$el, {
-        opacity: 0,
-        y: -500,
-        delay: 0.4,
-        duration: 1,
-      })
+    // const activeItem = ref(items[0])
 
-      gsap.to($subheadline.value.$el, {
-        opacity: 0,
-        y: -500,
-        delay: 0.3,
-        duration: 1,
-      })
+    // watch(activeView, () => {
+    //   setTimeout(() => (activeItem.value = items[activeView.value]), 1100)
+    // })
 
-      gsap.to($button.value.$el, {
-        opacity: 0,
-        y: -500,
-        delay: 0.2,
-        duration: 1,
-      })
-
-      gsap.to($illustration.value, {
-        opacity: 0,
-        y: -500,
-        delay: 0.2,
-        duration: 1,
-      })
-
-      changeActiveItem(items[activeView.value])
-    })
+    useAnimation([$background, $illustration, $headline, $subheadline, $button])
 
     return {
+      $background,
+      $illustration,
       $headline,
       $subheadline,
       $button,
-      $illustration,
       items,
       activeView,
       activeItem,
@@ -100,16 +57,28 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: $color-background;
+}
+
 .section {
   position: relative;
   display: flex;
   flex-direction: column;
   width: 60vw;
   min-height: 400px;
-  transform: translateY(-20px);
+
+  /* transform: translateY(-20px); */
 
   @include md {
-    transform: none;
+    /* transform: none; */
+
+    /* transform: none; */
   }
 
   &__button {

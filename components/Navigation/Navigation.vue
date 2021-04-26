@@ -6,7 +6,7 @@
         :key="item.label"
         :view-number="i"
         :is-active="i === activeView ? true : false"
-        @updateView="() => views.changeActiveView(i)"
+        @updateView="() => changeActiveView(i)"
         >{{ item.label }}</NavigationItem
       >
     </ul>
@@ -61,6 +61,7 @@ export default {
 
 <style lang="scss" scoped>
 .navigation {
+  z-index: 1000;
   &__list {
     padding: 0;
     list-style-type: none;

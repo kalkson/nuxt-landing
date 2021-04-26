@@ -14,7 +14,7 @@ export const useViews = () => {
     isAnimated.value = true
     setTimeout(() => {
       isAnimated.value = false
-    }, 2200)
+    }, 1700)
   }
 
   return {
@@ -27,14 +27,16 @@ export const useViews = () => {
 export const useItems = () => {
   const store = useStore()
   const items = store.getters.views
-  const activeItem = ref(items[0])
+  const activeItem = computed(() => store.getters.activeItem)
+  // const activeItem = ref(items[0])
+  // const activeItem = computed(() => activeItemView)
 
   // const { activeView } = useViews()
 
   const changeActiveItem = (item) => {
     setTimeout(() => {
-      activeItem.value = item
-    }, 1200)
+      store.commit('setActiveItem', item)
+    }, 1100)
   }
 
   return [items, activeItem, changeActiveItem]

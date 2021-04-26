@@ -27,11 +27,19 @@ export const state = () => ({
     },
   ],
   activeView: 0,
+  activeItem: {
+    title: 'bitcoin exchange and wallet',
+    label: 'Home',
+    illustration: '/illustration1.svg',
+  },
 })
 
 export const mutations = {
   setActiveView(state, number) {
     state.activeView = number
+  },
+  setActiveItem(state, item) {
+    state.activeItem = item
   },
 }
 
@@ -41,5 +49,8 @@ export const getters = {
   },
   activeView(state) {
     return state.activeView
+  },
+  activeItem(state) {
+    return state.activeItem
   },
 }

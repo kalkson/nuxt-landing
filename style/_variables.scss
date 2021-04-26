@@ -1,5 +1,13 @@
 //colors
 
-$color-main: #101010;
-$color-primary: #f2994a;
-$color-secondary: #f2c94c;
+:root {
+  --color-main: #101010;
+  --color-primary: #f2994a;
+  --color-secondary: #f2c94c;
+  --color-background: #000;
+}
+
+$color-main: var(--color-main);
+$color-primary: var(--color-primary);
+$color-secondary: var(--color-secondary);
+$color-background: var(--color-background);
