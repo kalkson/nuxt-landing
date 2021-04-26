@@ -1,0 +1,1 @@
+import 'swipe-touch-events'

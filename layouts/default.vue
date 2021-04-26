@@ -1,9 +1,55 @@
 <template>
-  <div class="container">
-    <Nuxt />
+  <div class="main-container">
+    <Header />
+    <div class="container">
+      <Nuxt v-if="!showHideSpinner" />
+    </div>
+    <div v-if="showHideSpinner" class="asd">
+      <Loading />
+    </div>
+    <Loading v-if="!showHideSpinner" class="loading-spinner" />
   </div>
 </template>
 
-<style lang="scss" scoped>
-@import '../style/global';
+<script>
+export default {
+  data() {
+    return {
+      showHideSpinner: true,
+    }
+  },
+  beforeCreate() {
+    this.showHideSpinner = true
+  },
+  mounted() {
+    this.showHideSpinner = false
+  },
+}
+</script>
+
+<style lang="scss">
+.loading-spinner {
+  z-index: -1;
+}
+
+header {
+  z-index: 10000;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  background-color: rgba($color: #fff, $alpha: 0.2);
+}
+
+.container {
+  width: 100%;
+  height: fit-content;
+  padding: 0 50px;
+
+  @include md {
+    padding: 0 140px;
+  }
+}
 </style>
