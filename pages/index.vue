@@ -17,9 +17,12 @@
 .full-screen-grid {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(200px, 200px) 1fr;
+  grid-template-columns: 40px 1fr;
   align-items: center;
   width: 100%;
-  height: 100vh;
+
+  @include md {
+    grid-template-columns: minmax(200px, 200px) 1fr;
+  }
 }
 </style>

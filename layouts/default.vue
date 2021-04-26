@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main-container">
     <Header />
     <div class="container">
       <Nuxt v-if="!showHideSpinner" />
@@ -35,13 +35,20 @@ export default {
 
 <style lang="scss">
 body {
+  display: flex;
+  align-items: center;
+  height: 100vh;
   background-color: $color-main;
 }
 
 .container {
   width: 100%;
   height: fit-content;
-  padding: 0 140px;
+  padding: 0 50px;
+
+  @include md {
+    padding: 0 140px;
+  }
 }
 
 .loading-page {

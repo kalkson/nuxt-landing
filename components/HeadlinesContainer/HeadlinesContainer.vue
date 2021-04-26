@@ -1,6 +1,16 @@
 <template>
   <div class="section">
-    <Illustration class="view-illustration" />
+    <!-- <Illustration class="view-illustration" /> -->
+    <img
+      ref="$illustration"
+      v-gsap.fromTo="[
+        { opacity: 0, y: 500 },
+        { opacity: 1, y: 0, delay: 0.2, duration: 1 },
+      ]"
+      class="view-illustration"
+      :src="activeItem.illustration"
+      alt=""
+    />
     <!-- <img alt="" /> -->
     <Headline
       ref="$headline"
@@ -35,17 +45,16 @@
 import gsap from 'gsap'
 import { ref, watch } from '@nuxtjs/composition-api'
 import { useViews, useItems } from '~/hooks/views'
-import Illustration from '~/assets/svg/illustration.svg?inline'
+// import Illustration from '~/assets/svg/illustration.svg?inline'
 
 export default {
-  components: {
-    Illustration,
-  },
-
   setup() {
     const $headline = ref(null)
     const $subheadline = ref(null)
     const $button = ref(null)
+    const $illustration = ref(null)
+
+    console.log($illustration)
 
     const { activeView } = useViews()
     const [items, activeItem, changeActiveItem] = useItems()
@@ -70,6 +79,12 @@ export default {
         { opacity: 0, y: -500, delay: 0.2, duration: 1 }
       )
 
+      gsap.to(
+        $illustration.value,
+        // { opacity: 1, y: 0 },
+        { opacity: 0, y: -500, delay: 0.2, duration: 1 }
+      )
+
       changeActiveItem(items[activeView.value])
     })
 
@@ -77,6 +92,7 @@ export default {
       $headline,
       $subheadline,
       $button,
+      $illustration,
       items,
       activeView,
       activeItem,
@@ -90,17 +106,30 @@ export default {
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 400px;
+  width: 60vw;
+  min-height: 400px;
 
   &__button {
     margin-top: auto;
+    @include md {
+      margin-top: auto;
+    }
   }
 }
 
 .view-illustration {
   position: absolute;
-  top: -100%;
-  right: -200px;
+  right: -90%;
+  bottom: 30%;
   z-index: 0;
+  width: 300px;
+  height: 260px;
+
+  @include lg {
+    right: -50%;
+    bottom: -150px;
+    width: 800px;
+    height: 700px;
+  }
 }
 </style>

@@ -10,7 +10,7 @@ export default {}
 
 <style lang="scss" scoped>
 .headline {
-  font-size: 9.6rem;
+  font-size: 3.2rem;
   font-weight: 900;
   color: white;
   text-transform: uppercase;
@@ -18,6 +18,10 @@ export default {}
 
   &__oranged {
     color: $color-primary;
+  }
+
+  @include md {
+    font-size: 9.6rem;
   }
 }
 </style>

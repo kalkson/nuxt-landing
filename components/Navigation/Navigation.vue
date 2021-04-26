@@ -14,18 +14,14 @@
 </template>
 
 <script>
-// import { ref } from '@nuxtjs/composition-api'
-import { useViews } from '~/hooks/views'
+import { useViews, useItems } from '~/hooks/views'
 
 export default {
   setup() {
-    // const activeView = ref(0)
-    // const isAnimated = ref(false)
-    // const store = useStore()
     const views = useViews()
 
-    const { items, activeView, changeActiveView } = views
-    // const views = useViews()
+    const { activeView, changeActiveView } = views
+    const [items] = useItems()
 
     const changeViewOnScroll = ({ deltaY }) => {
       const number = deltaY > 0 ? activeView.value + 1 : activeView.value - 1

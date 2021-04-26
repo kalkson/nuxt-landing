@@ -3,11 +3,28 @@ export const state = () => ({
     {
       title: 'bitcoin exchange and wallet',
       label: 'Home',
+      illustration: '/illustration1.svg',
     },
-    { title: 'simply return the expression', label: 'Invest' },
-    { title: 'take first of us', label: 'Be first' },
-    { title: 'give some advice', label: 'Who we are' },
-    { title: 'contact with as do get some exp', label: 'Contact' },
+    {
+      title: 'simply return the expression',
+      label: 'Invest',
+      illustration: '/illustration2.svg',
+    },
+    {
+      title: 'take first of us',
+      label: 'Be first',
+      illustration: '/illustration3.svg',
+    },
+    {
+      title: 'give some advice',
+      label: 'Who we are',
+      illustration: '/illustration4.svg',
+    },
+    {
+      title: 'contact with as do get some exp',
+      label: 'Contact',
+      illustration: '/illustration5.svg',
+    },
   ],
   activeView: 0,
 })

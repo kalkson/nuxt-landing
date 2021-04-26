@@ -10,7 +10,6 @@ export const useViews = () => {
   const changeActiveView = (number) => {
     if (number < 0 || number > items.length - 1) return
     if (isAnimated.value === true) return
-    activeView.value = number
     store.commit('setActiveView', number)
     isAnimated.value = true
     setTimeout(() => {

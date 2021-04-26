@@ -1,10 +1,10 @@
 <template>
-  <div class="container header-container">
+  <header class="container header-container">
     <nav class="header">
       <Logo class="header__logo" />
       <Button />
     </nav>
-  </div>
+  </header>
 </template>
 
 <script>
@@ -29,5 +29,6 @@ export default {}
 
 .header-container {
   position: fixed;
+  top: 0;
 }
 </style>
