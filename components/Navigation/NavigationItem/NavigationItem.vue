@@ -82,12 +82,6 @@ $base: item;
   }
 
   &.active {
-    /* .item__label {
-      visibility: visible;
-      transform: translateX(0);
-      opacity: 1;
-    } */
-
     .item__dot {
       background-color: $color-primary;
       transform: scale(1.5);

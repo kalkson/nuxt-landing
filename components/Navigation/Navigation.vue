@@ -18,36 +18,43 @@ import { useViews, useItems } from '~/hooks/views'
 
 export default {
   setup() {
-    const views = useViews()
-
-    const { activeView, changeActiveView } = views
+    const { activeView, changeActiveView } = useViews()
     const [items] = useItems()
 
     const changeViewOnScroll = ({ deltaY }) => {
       const number = deltaY > 0 ? activeView.value + 1 : activeView.value - 1
-      views.changeActiveView(number)
+      changeActiveView(number)
+    }
+
+    const changeViewOnSwipeDown = () => {
+      console.log('asd')
+      changeActiveView(activeView.value - 1)
+    }
+
+    const changeViewOnSwipeUp = () => {
+      console.log('asd')
+      changeActiveView(activeView.value + 1)
     }
 
     return {
       changeActiveView,
-      views,
       changeViewOnScroll,
       activeView,
       items,
+      changeViewOnSwipeDown,
+      changeViewOnSwipeUp,
     }
   },
 
   beforeMount() {
     window.addEventListener('wheel', this.changeViewOnScroll)
-    window.addEventListener('swipedown', () =>
-      this.views.changeActiveView(this.activeView - 1)
-    )
-    window.addEventListener('swipeup', () =>
-      this.views.changeActiveView(this.activeView + 1)
-    )
+    window.addEventListener('swipedown', this.changeViewOnSwipeDown)
+    window.addEventListener('swipeup', this.changeViewOnSwipeUp)
   },
   unmounted() {
     window.removeEventListener('wheel', this.changeViewOnScroll)
+    window.removeEventListener('swipedown', this.changeViewOnSwipeDown)
+    window.removeEventListener('swipeup', this.changeViewOnSwipeUp)
   },
 }
 </script>
@@ -57,6 +64,11 @@ export default {
   &__list {
     padding: 0;
     list-style-type: none;
+    transform: translateY(-20px);
+
+    @include md {
+      transform: none;
+    }
 
     & > li:last-of-type {
       &::after {

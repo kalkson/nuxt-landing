@@ -1,6 +1,5 @@
 <template>
   <div class="section">
-    <!-- <Illustration class="view-illustration" /> -->
     <img
       ref="$illustration"
       v-gsap.fromTo="[
@@ -9,9 +8,8 @@
       ]"
       class="view-illustration"
       :src="activeItem.illustration"
-      alt=""
+      alt="background illustration"
     />
-    <!-- <img alt="" /> -->
     <Headline
       ref="$headline"
       v-gsap.fromTo="[
@@ -45,7 +43,6 @@
 import gsap from 'gsap'
 import { ref, watch } from '@nuxtjs/composition-api'
 import { useViews, useItems } from '~/hooks/views'
-// import Illustration from '~/assets/svg/illustration.svg?inline'
 
 export default {
   setup() {
@@ -54,36 +51,37 @@ export default {
     const $button = ref(null)
     const $illustration = ref(null)
 
-    console.log($illustration)
-
     const { activeView } = useViews()
     const [items, activeItem, changeActiveItem] = useItems()
-    // const activeItem = ref(items[0])
 
     watch(activeView, () => {
-      gsap.to(
-        $headline.value.$el,
-        // { opacity: 1, y: 0 },
-        { opacity: 0, y: -500, delay: 0.4, duration: 1 }
-      )
+      gsap.to($headline.value.$el, {
+        opacity: 0,
+        y: -500,
+        delay: 0.4,
+        duration: 1,
+      })
 
-      gsap.to(
-        $subheadline.value.$el,
-        // { opacity: 1, y: 0 },
-        { opacity: 0, y: -500, delay: 0.3, duration: 1 }
-      )
+      gsap.to($subheadline.value.$el, {
+        opacity: 0,
+        y: -500,
+        delay: 0.3,
+        duration: 1,
+      })
 
-      gsap.to(
-        $button.value.$el,
-        // { opacity: 1, y: 0 },
-        { opacity: 0, y: -500, delay: 0.2, duration: 1 }
-      )
+      gsap.to($button.value.$el, {
+        opacity: 0,
+        y: -500,
+        delay: 0.2,
+        duration: 1,
+      })
 
-      gsap.to(
-        $illustration.value,
-        // { opacity: 1, y: 0 },
-        { opacity: 0, y: -500, delay: 0.2, duration: 1 }
-      )
+      gsap.to($illustration.value, {
+        opacity: 0,
+        y: -500,
+        delay: 0.2,
+        duration: 1,
+      })
 
       changeActiveItem(items[activeView.value])
     })
@@ -108,11 +106,17 @@ export default {
   flex-direction: column;
   width: 60vw;
   min-height: 400px;
+  transform: translateY(-20px);
+
+  @include md {
+    transform: none;
+  }
 
   &__button {
     margin-top: auto;
     @include md {
       margin-top: auto;
+      transform: none;
     }
   }
 }
