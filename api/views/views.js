@@ -1,15 +1,9 @@
 import axios from 'axios'
-import { setupCache } from 'axios-cache-adapter'
-
-const cache = setupCache({
-  maxAge: 15 * 60 * 1000,
-})
 
 const baseURL = process.env.BASE_URL
 
 const api = axios.create({
   baseURL,
-  adapter: cache.adapter,
 })
 
 export const endpoints = {
