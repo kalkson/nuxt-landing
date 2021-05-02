@@ -63,7 +63,7 @@ export default {
   env: {
     BASE_URL:
       process.env.NODE_ENV !== 'production'
-        ? 'http://localhost:1337/'
+        ? 'http://localhost:1337'
         : 'http://api.landing.huehue.fun',
   },
   build: {},

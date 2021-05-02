@@ -5,7 +5,7 @@
       <img
         ref="$illustration"
         class="view-illustration"
-        :src="`http://localhost:1337${activeItem.illustration.url}`"
+        :src="`${baseURL}${activeItem.illustration.url}`"
         alt="background illustration"
       />
       <Headline ref="$headline" class="section__headline">{{
@@ -48,6 +48,12 @@ export default {
       items,
       activeView,
       activeItem,
+    }
+  },
+
+  data() {
+    return {
+      baseURL: process.env.BASE_URL,
     }
   },
 }
