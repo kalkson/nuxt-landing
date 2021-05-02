@@ -14,6 +14,8 @@
   "dependencies": {
     "@nuxtjs/composition-api": "^0.23.1",
     "@nuxtjs/svg": "^0.1.12",
+    "axios": "^0.21.1",
+    "axios-cache-adapter": "^2.7.3",
     "core-js": "^3.9.1",
     "gsap": "^3.6.1",
     "nuxt": "^2.15.3",

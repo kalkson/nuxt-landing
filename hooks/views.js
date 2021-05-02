@@ -3,41 +3,35 @@ import { ref, computed, useStore } from '@nuxtjs/composition-api'
 export const useViews = () => {
   const store = useStore()
   const activeView = computed(() => store.getters.activeView)
+  const activeItem = computed(() => store.getters.activeItem)
+  const items = computed(() => store.getters.views)
   const isAnimated = ref(false)
 
-  const items = store.getters.views
-
   const changeActiveView = (number) => {
-    if (number < 0 || number > items.length - 1) return
+    if (number < 0 || number > items.value.length - 1) return
     if (isAnimated.value === true) return
-    store.commit('setActiveView', number)
+    store.dispatch('setActiveView', number)
     isAnimated.value = true
+
     setTimeout(() => {
       isAnimated.value = false
     }, 1700)
+
+    setTimeout(() => {
+      store.dispatch('setActiveItem', items.value[number])
+    }, 1300)
   }
+
+  // const changeActiveItem = (item) => {
+  //   setTimeout(() => {
+  //     store.dispatch('setActiveItem', item)
+  //   }, 1300)
+  // }
 
   return {
     items,
-    changeActiveView,
     activeView,
+    changeActiveView,
+    activeItem,
   }
-}
-
-export const useItems = () => {
-  const store = useStore()
-  const items = store.getters.views
-  const activeItem = computed(() => store.getters.activeItem)
-  // const activeItem = ref(items[0])
-  // const activeItem = computed(() => activeItemView)
-
-  // const { activeView } = useViews()
-
-  const changeActiveItem = (item) => {
-    setTimeout(() => {
-      store.commit('setActiveItem', item)
-    }, 1100)
-  }
-
-  return [items, activeItem, changeActiveItem]
 }

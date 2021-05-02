@@ -21,7 +21,6 @@ button {
   font-size: 2rem;
   text-transform: uppercase;
   border-radius: 4px;
-  opacity: 0;
 
   &.filled {
     padding: 14px 70px;

@@ -1,26 +1,30 @@
 <template>
-  <div class="section">
-    <div ref="$background" class="background"></div>
-    <img
-      ref="$illustration"
-      class="view-illustration"
-      :src="activeItem.illustration"
-      alt="background illustration"
-    />
-    <Headline ref="$headline">{{ activeItem.title }}</Headline>
-    <Subheadline ref="$subheadline"
-      >bitcoin excahnge you can trust.</Subheadline
-    >
-    <Button ref="$button" class="section__button" type="filled"
-      >sign up for free</Button
-    >
-  </div>
+  <keep-alive>
+    <div class="section">
+      <div ref="$background" class="background"></div>
+      <img
+        ref="$illustration"
+        class="view-illustration"
+        :src="`http://localhost:1337${activeItem.illustration.url}`"
+        alt="background illustration"
+      />
+      <Headline ref="$headline" class="section__headline">{{
+        activeItem.title
+      }}</Headline>
+      <Subheadline ref="$subheadline" class="section__subheadline"
+        >bitcoin excahnge you can trust.</Subheadline
+      >
+      <Button ref="$button" class="section__button" type="filled"
+        >sign up for free</Button
+      >
+    </div>
+  </keep-alive>
 </template>
 
 <script>
 // import gsap from 'gsap'
 import { ref } from '@nuxtjs/composition-api'
-import { useViews, useItems } from '~/hooks/views'
+import { useViews } from '~/hooks/views'
 import { useAnimation } from '~/hooks/animations'
 
 export default {
@@ -31,14 +35,7 @@ export default {
     const $subheadline = ref(null)
     const $button = ref(null)
 
-    const [items, activeItem] = useItems()
-    const { activeView } = useViews()
-
-    // const activeItem = ref(items[0])
-
-    // watch(activeView, () => {
-    //   setTimeout(() => (activeItem.value = items[activeView.value]), 1100)
-    // })
+    const { activeView, items, activeItem } = useViews()
 
     useAnimation([$background, $illustration, $headline, $subheadline, $button])
 
@@ -73,12 +70,11 @@ export default {
   width: 60vw;
   min-height: 400px;
 
-  /* transform: translateY(-20px); */
-
-  @include md {
-    /* transform: none; */
-
-    /* transform: none; */
+  &__headline,
+  &__subheadline,
+  &__button {
+    position: relative;
+    opacity: 0;
   }
 
   &__button {

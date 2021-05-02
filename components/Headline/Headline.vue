@@ -14,7 +14,6 @@ export default {}
   font-weight: 900;
   color: white;
   text-transform: uppercase;
-  opacity: 0;
 
   &__oranged {
     color: $color-primary;

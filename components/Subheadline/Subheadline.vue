@@ -13,7 +13,6 @@ export default {}
   font-weight: 400;
   color: white;
   text-transform: uppercase;
-  opacity: 0;
 
   @include md {
     font-size: 3.2rem;

@@ -1,6 +1,6 @@
-import { watch, onUpdated } from '@nuxtjs/composition-api'
+import { watch, onUpdated, onMounted } from '@nuxtjs/composition-api'
 import gsap from 'gsap'
-import { useViews, useItems } from './views'
+import { useViews } from './views'
 
 const animationPlayStates = [
   {
@@ -29,17 +29,16 @@ const animationDelays = [0.4, 0.3, 0.2, 0.2, 0.4]
 const animationDelaysIncome = [0.2, 0.4, 0.2, 0.3, 0.3]
 
 export const useAnimation = ([...refferals]) => {
-  const [items, , changeActiveItem] = useItems()
   const { activeView } = useViews()
 
-  onUpdated(() => {
+  onMounted(() =>
     refferals.map(async (ref, i) => {
-      const refElement = (await ref.value?.$el) || ref.value
+      const refElement = (await ref.value?.$el) || (await ref.value)
       const playState =
         animationPlayStates[activeView.value]?.income ||
         animationPlayStates[0].income
 
-      if (refElement.classList.value === 'background') {
+      if (refElement?.classList?.value === 'background') {
         gsap.fromTo(
           refElement,
           {
@@ -66,7 +65,43 @@ export const useAnimation = ([...refferals]) => {
 
       return null
     })
-  })
+  )
+
+  onUpdated(() =>
+    refferals.map(async (ref, i) => {
+      const refElement = (await ref.value?.$el) || (await ref.value)
+      const playState =
+        animationPlayStates[activeView.value]?.income ||
+        animationPlayStates[0].income
+
+      if (refElement?.classList?.value === 'background') {
+        gsap.fromTo(
+          refElement,
+          {
+            y: -1000,
+          },
+          {
+            y: 0,
+            delay: 0.2,
+            duration: 1,
+          }
+        )
+      } else {
+        gsap.fromTo(
+          refElement,
+          {
+            ...playState.from,
+          },
+          {
+            ...playState.to,
+            delay: animationDelaysIncome[i],
+          }
+        )
+      }
+
+      return null
+    })
+  )
 
   watch(activeView, () => {
     refferals.map((ref, i) => {
@@ -90,9 +125,5 @@ export const useAnimation = ([...refferals]) => {
 
       return null
     })
-
-    changeActiveItem(items[activeView.value])
-
-    // document.documentElement.style.setProperty('--color-secondary', '#FEFEFE')
   })
 }

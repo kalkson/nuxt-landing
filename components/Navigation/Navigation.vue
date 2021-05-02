@@ -14,12 +14,11 @@
 </template>
 
 <script>
-import { useViews, useItems } from '~/hooks/views'
+import { useViews } from '~/hooks/views'
 
 export default {
   setup() {
-    const { activeView, changeActiveView } = useViews()
-    const [items] = useItems()
+    const { activeView, changeActiveView, items } = useViews()
 
     const changeViewOnScroll = ({ deltaY }) => {
       const number = deltaY > 0 ? activeView.value + 1 : activeView.value - 1
@@ -27,12 +26,10 @@ export default {
     }
 
     const changeViewOnSwipeDown = () => {
-      console.log('asd')
       changeActiveView(activeView.value - 1)
     }
 
     const changeViewOnSwipeUp = () => {
-      console.log('asd')
       changeActiveView(activeView.value + 1)
     }
 

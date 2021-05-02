@@ -1,11 +1,8 @@
 <template>
   <div class="main-container">
     <Header />
-    <div class="container">
-      <Nuxt v-if="!showHideSpinner" />
-    </div>
-    <div v-if="showHideSpinner" class="asd">
-      <Loading />
+    <div v-if="!showHideSpinner" class="container">
+      <Nuxt />
     </div>
     <Loading v-if="!showHideSpinner" class="loading-spinner" />
   </div>

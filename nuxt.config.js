@@ -60,12 +60,11 @@ export default {
     display: 'swap',
     preconnect: true,
   },
-  // loading: '~/components/Loading/Loading.vue',
-  // loadingIndicator: {
-  //   name: 'circle',
-  //   color: '#3B8070',
-  //   background: 'white',
-  // },
-  // Build Configuration: https://go.nuxtjs.dev/config-build
+  env: {
+    BASE_URL:
+      process.env.NODE_ENV !== 'production'
+        ? 'http://localhost:1337/'
+        : 'http://api.huehue.fun',
+  },
   build: {},
 }

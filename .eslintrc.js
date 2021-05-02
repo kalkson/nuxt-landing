@@ -13,6 +13,13 @@ module.exports = {
     'plugin:nuxt/recommended',
   ],
   plugins: [],
+  rules: {
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
+  },
   // add your custom rules here
-  rules: {},
 }
